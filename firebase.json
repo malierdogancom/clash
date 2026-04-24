@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "clash-malierdogan",
+    "target": "clash",
     "public": "public",
     "ignore": [
       "firebase.json",
