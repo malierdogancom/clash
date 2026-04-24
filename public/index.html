@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoC Account Analyzer — clash.malierdogan.com</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <h1>⚔️ CoC Account Analyzer</h1>
+  <span class="version-tag">Phase 1 — Building Overview</span>
+</header>
+
+<div id="input-section">
+  <label for="json-input">Paste your JSON export</label>
+  <textarea id="json-input" spellcheck="false"
+    placeholder='{"tag":"#XXXXXXXX","timestamp":...,"buildings":[...],...}'></textarea>
+  <div class="input-actions">
+    <button id="analyze-btn">Analyze</button>
+    <button id="clear-btn">Clear</button>
+  </div>
+  <div id="error-msg" class="error-msg"></div>
+</div>
+
+<div id="placeholder" style="text-align:center;padding:60px 24px;color:#6e6e8a;">
+  <div style="font-size:48px;margin-bottom:12px">🏰</div>
+  <p>Paste your game export JSON above and click <strong style="color:#c8a84b">Analyze</strong></p>
+</div>
+
+<div id="results" style="display:none"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
