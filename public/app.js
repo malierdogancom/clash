@@ -20,6 +20,7 @@ function effectiveTimer(rawSec) {
   return Math.max(0, rawSec - elapsedSec());
 }
 
+
 function resolve(section, id) {
   const key = String(id);
   const entry = M?.[section]?.[key];
@@ -114,7 +115,7 @@ function parse(data) {
 
   // Heroes in CoC use a builder slot while upgrading
   const busyBuilders = upgrades.filter(u => u.type === 'builder' || u.type === 'hero').length;
-  const labBusy      = upgrades.some(u => u.type === 'lab');
+  const labBusy = upgrades.some(u => u.type === 'lab');
 
   // Aggregate buildings for summary (group by id, collect levels + counts)
   const bldMap = new Map(); // id → { name, category, levels: Map<lvl, count>, upgrading: bool }
@@ -405,7 +406,9 @@ function analyze() {
     return;
   }
 
-  analyzeTimestamp = Date.now();
+  // Use the game's own export timestamp for accurate timer math
+  analyzeTimestamp = data.timestamp ? data.timestamp * 1000 : Date.now();
+
   const parsed   = parse(data);
   const html     = render(parsed);
   const resultsEl = document.getElementById('results');
