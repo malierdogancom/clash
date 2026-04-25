@@ -50,7 +50,7 @@ function parse(data) {
   const thEntry = (data.buildings || []).find(b => b.data === 1000001);
   const thLevel = thEntry?.lvl ?? '?';
 
-  // 6th builder: both B.O.B. (28000003) and O.T.T.O. (28000005) must be lvl 30+
+  // TODO: 6th builder logic will be updated
   const h2 = data.heroes2 || [];
   const hasBOB  = h2.some(h => h.data === 28000003 && h.lvl >= 30);
   const hasOTTO = h2.some(h => h.data === 28000005 && h.lvl >= 30);
