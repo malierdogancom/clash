@@ -1,4 +1,6 @@
-let M = null; // mappings
+let M = null;
+let analyzeTimestamp = 0;
+let liveInterval = null;
 
 async function init() {
   try {
@@ -8,6 +10,14 @@ async function init() {
   }
   document.getElementById('analyze-btn').addEventListener('click', analyze);
   document.getElementById('clear-btn').addEventListener('click', clearAll);
+}
+
+function elapsedSec() {
+  return analyzeTimestamp ? Math.floor((Date.now() - analyzeTimestamp) / 1000) : 0;
+}
+
+function effectiveTimer(rawSec) {
+  return Math.max(0, rawSec - elapsedSec());
 }
 
 function resolve(section, id) {
@@ -102,7 +112,8 @@ function parse(data) {
 
   upgrades.sort((a, b) => a.timer - b.timer);
 
-  const busyBuilders = upgrades.filter(u => u.type === 'builder').length;
+  // Heroes in CoC use a builder slot while upgrading
+  const busyBuilders = upgrades.filter(u => u.type === 'builder' || u.type === 'hero').length;
   const labBusy      = upgrades.some(u => u.type === 'lab');
 
   // Aggregate buildings for summary (group by id, collect levels + counts)
@@ -175,7 +186,7 @@ function upgradeIcon(type) {
   return icons[type] || '🔧';
 }
 
-function section(id, title, countLabel, bodyHtml, collapsed = false) {
+function section(_id, title, countLabel, bodyHtml, collapsed = false) {
   return `
   <div class="section">
     <div class="section-header${collapsed ? ' collapsed' : ''}" onclick="toggleSection(this)">
@@ -218,13 +229,16 @@ function render(d) {
 
   // ── Active upgrades
   if (d.upgrades.length > 0 || d.bbUpgrades.length > 0) {
-    const rows = [...d.upgrades, ...d.bbUpgrades].map(u => `
+    const rows = [...d.upgrades, ...d.bbUpgrades].map(u => {
+      const eff = effectiveTimer(u.timer);
+      return `
       <div class="upgrade-row ${u.type}">
         <span class="icon">${upgradeIcon(u.type)}</span>
         <span class="name">${u.name}</span>
         <span class="level">→ Lv ${u.level}</span>
-        <span class="timer ${timerClass(u.timer)}">${formatTimer(u.timer)}</span>
-      </div>`).join('');
+        <span class="timer ${timerClass(eff)}" data-timer="${u.timer}">${formatTimer(eff)}</span>
+      </div>`;
+    }).join('');
     parts.push(section('upgrades', '⏱ Active Upgrades',
       `${d.upgrades.length + d.bbUpgrades.length}`,
       `<div class="upgrade-list">${rows}</div>`
@@ -234,7 +248,8 @@ function render(d) {
   // ── Heroes
   const heroRows = d.heroes.map(h => {
     const name  = resolve('heroes', h.data);
-    const timer = h.timer ? `<div class="hero-timer">⬆ ${formatTimer(h.timer)} remaining</div>` : '';
+    const eff   = h.timer ? effectiveTimer(h.timer) : 0;
+    const timer = h.timer ? `<div class="hero-timer" data-timer="${h.timer}">⬆ ${formatTimer(eff)} remaining</div>` : '';
     return `
     <div class="hero-card">
       <div class="hero-name">${name}</div>
@@ -259,7 +274,8 @@ function render(d) {
   if (d.pets.length > 0) {
     const petRows = d.pets.map(p => {
       const name  = resolve('pets', p.data);
-      const timer = p.timer ? `<div class="ptimer">⬆ ${formatTimer(p.timer)}</div>` : '';
+      const eff   = p.timer ? effectiveTimer(p.timer) : 0;
+      const timer = p.timer ? `<div class="ptimer" data-timer="${p.timer}">⬆ ${formatTimer(eff)}</div>` : '';
       return `<div class="pet-row"><span class="pname">${name}</span><div style="text-align:right"><span class="plevel">Lv ${p.lvl}</span>${timer}</div></div>`;
     }).join('');
     parts.push(section('pets', '🐾 Pets', null, `<div class="pet-grid">${petRows}</div>`));
@@ -389,6 +405,7 @@ function analyze() {
     return;
   }
 
+  analyzeTimestamp = Date.now();
   const parsed   = parse(data);
   const html     = render(parsed);
   const resultsEl = document.getElementById('results');
@@ -396,9 +413,30 @@ function analyze() {
   resultsEl.style.display = 'block';
   document.getElementById('placeholder').style.display = 'none';
   resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  if (liveInterval) clearInterval(liveInterval);
+  liveInterval = setInterval(tickTimers, 30000);
+}
+
+function tickTimers() {
+  document.querySelectorAll('[data-timer]').forEach(el => {
+    const raw = parseInt(el.dataset.timer, 10);
+    const eff = effectiveTimer(raw);
+    if (el.classList.contains('timer')) {
+      el.textContent = formatTimer(eff);
+      el.className   = 'timer ' + timerClass(eff);
+    } else {
+      // hero-timer / ptimer — preserve the leading text
+      const prefix = el.classList.contains('hero-timer') ? '⬆ ' : '⬆ ';
+      const suffix = el.classList.contains('hero-timer') ? ' remaining' : '';
+      el.textContent = prefix + formatTimer(eff) + suffix;
+    }
+  });
 }
 
 function clearAll() {
+  if (liveInterval) { clearInterval(liveInterval); liveInterval = null; }
+  analyzeTimestamp = 0;
   document.getElementById('json-input').value = '';
   document.getElementById('error-msg').textContent = '';
   document.getElementById('results').style.display = 'none';

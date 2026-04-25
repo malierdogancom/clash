@@ -343,7 +343,9 @@ button:active { transform: scale(0.97); }
   font-size: 12px;
 }
 .troop-row .tname { flex: 1; }
-.troop-row.dark-troop .tname { color: #58d68d; }
+.troop-row.dark-troop { background: #0e1a12; }
+.troop-row.dark-troop .tname { color: var(--text); }
+.troop-row.dark-troop .tname::after { content: ' DE'; font-size: 9px; color: var(--dark-el); font-weight: 700; vertical-align: super; }
 .troop-row .tlevel { font-weight: 700; color: var(--muted); }
 .troop-row.upgrading-lab { border: 1px solid var(--elixir); background: #1a0e24; }
 .troop-row.upgrading-lab .tname { color: var(--elixir); }
