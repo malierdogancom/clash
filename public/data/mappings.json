@@ -1,5 +1,5 @@
 {
-  "version": "v0.1 — TH18 (2025)",
+  "version": "v0.2 — TH18 (2025)",
   "buildings": {
     "1000000": { "name": "Army Camp",             "category": "army" },
     "1000001": { "name": "Town Hall",              "category": "special" },
@@ -29,14 +29,18 @@
     "1000031": { "name": "Eagle Artillery",        "category": "defense" },
     "1000032": { "name": "Bomb Tower",             "category": "defense" },
     "1000059": { "name": "Workshop",               "category": "army" },
-    "1000064": { "name": "Ricochet Cannon",        "category": "defense" },
+    "1000064": { "name": "B.O.B Hut",             "category": "special" },
     "1000067": { "name": "Scattershot",            "category": "defense" },
     "1000068": { "name": "Pet House",              "category": "army" },
     "1000070": { "name": "Blacksmith",             "category": "special" },
     "1000071": { "name": "Hero Hall",              "category": "special" },
     "1000072": { "name": "Spell Tower",            "category": "defense" },
     "1000077": { "name": "Monolith",               "category": "defense" },
-    "1000093": { "name": "New Building",           "category": "defense" }
+    "1000079": { "name": "Multi Gear Tower",       "category": "defense" },
+    "1000084": { "name": "Multi-Archer Tower",     "category": "defense" },
+    "1000085": { "name": "Ricochet Cannon",        "category": "defense" },
+    "1000089": { "name": "Firespitter",            "category": "defense" },
+    "1000093": { "name": "Helper Hut",             "category": "special" }
   },
   "buildings2": {
     "1000033": { "name": "Wall (BB)",              "category": "bb_defense" },
@@ -68,7 +72,7 @@
     "1000065": { "name": "Super P.E.K.K.A. Bumper","category": "bb_defense" },
     "1000078": { "name": "Battle Machine Altar",   "category": "bb_special" },
     "1000080": { "name": "Power Laboratory",       "category": "bb_army" },
-    "1000082": { "name": "New BB Building",        "category": "bb_special" }
+    "1000082": { "name": "Reinforcement Camp",     "category": "bb_army" }
   },
   "heroes": {
     "28000000": { "name": "Barbarian King" },
@@ -76,7 +80,7 @@
     "28000002": { "name": "Grand Warden" },
     "28000004": { "name": "Royal Champion" },
     "28000006": { "name": "Minion Prince" },
-    "28000007": { "name": "Unknown Hero" }
+    "28000007": { "name": "Dragon Duke" }
   },
   "heroes2": {
     "28000003": { "name": "B.O.B." },
@@ -105,12 +109,15 @@
     "4000053":  { "name": "Yeti",              "dark": false },
     "4000058":  { "name": "Ice Golem",         "dark": true },
     "4000059":  { "name": "Electro Dragon",    "dark": false },
-    "4000065":  { "name": "Dragon Rider",      "dark": true },
+    "4000065":  { "name": "Dragon Rider",      "dark": false },
     "4000082":  { "name": "Headhunter",        "dark": true },
-    "4000095":  { "name": "Electro Titan",     "dark": true },
+    "4000095":  { "name": "Electro Titan",     "dark": false },
     "4000097":  { "name": "Apprentice Warden", "dark": true },
+    "4000110":  { "name": "Root Rider",        "dark": false },
     "4000123":  { "name": "Druid",             "dark": true },
-    "4000150":  { "name": "Furnace",           "dark": false }
+    "4000132":  { "name": "Thrower",           "dark": false },
+    "4000150":  { "name": "Furnace",           "dark": true },
+    "4000155":  { "name": "Meteor Golem",      "dark": false }
   },
   "units2": {
     "4000031": { "name": "Raged Barbarian" },
@@ -131,7 +138,9 @@
     "4000062": { "name": "Stone Slammer" },
     "4000075": { "name": "Siege Barracks" },
     "4000087": { "name": "Log Launcher" },
-    "4000091": { "name": "Flame Flinger" }
+    "4000091": { "name": "Flame Flinger" },
+    "4000092": { "name": "Battle Drill" },
+    "4000135": { "name": "Troop Launcher" }
   },
   "spells": {
     "26000000": { "name": "Lightning Spell",     "dark": false },
@@ -147,24 +156,25 @@
     "26000028": { "name": "Bat Spell",           "dark": true },
     "26000035": { "name": "Invisibility Spell",  "dark": false },
     "26000053": { "name": "Recall Spell",        "dark": false },
-    "26000070": { "name": "Overgrowth Spell",    "dark": false },
-    "26000098": { "name": "Revive Spell",        "dark": true },
-    "26000109": { "name": "Ice Block Spell",     "dark": false },
+    "26000070": { "name": "Overgrowth Spell",    "dark": true },
+    "26000098": { "name": "Revive Spell",        "dark": false },
+    "26000109": { "name": "Ice Block Spell",     "dark": true },
+    "26000114": { "name": "Totem Spell",         "dark": false },
     "26000120": { "name": "New Spell",           "dark": false }
   },
   "pets": {
     "73000000": { "name": "L.A.S.S.I." },
-    "73000001": { "name": "Electro Owl" },
-    "73000002": { "name": "Mighty Yak" },
+    "73000001": { "name": "Mighty Yak" },
+    "73000002": { "name": "Electro Owl" },
     "73000003": { "name": "Unicorn" },
     "73000004": { "name": "Phoenix" },
-    "73000005": { "name": "Poison Lizard" },
-    "73000006": { "name": "Diggy" },
-    "73000007": { "name": "Frosty" },
-    "73000008": { "name": "Spirit Fox" },
-    "73000009": { "name": "Angry Jelly" },
-    "73000010": { "name": "Sneezy" },
-    "73000011": { "name": "New Pet" }
+    "73000007": { "name": "Poison Lizard" },
+    "73000008": { "name": "Diggy" },
+    "73000009": { "name": "Frosty" },
+    "73000010": { "name": "Spirit Fox" },
+    "73000011": { "name": "Angry Jelly" },
+    "73000016": { "name": "Sneezy" },
+    "73000017": { "name": "Greedy Raven" }
   },
   "equipment": {
     "90000000": { "name": "Barbarian Puppet",    "hero": "Barbarian King",  "rarity": "common" },
@@ -206,19 +216,19 @@
     "90000057": { "name": "New Equipment",       "hero": "Unknown",         "rarity": "common" }
   },
   "helpers": {
-    "93000000": { "name": "Builder Mercenary" },
-    "93000001": { "name": "Builder Mercenary" },
-    "93000002": { "name": "Builder Mercenary" },
-    "93000003": { "name": "Builder Mercenary" }
+    "93000000": { "name": "Apprentice Builder" },
+    "93000001": { "name": "Laboratory Assistant" },
+    "93000002": { "name": "Alchemist" }
   },
   "traps": {
-    "12000000": { "name": "Spring Trap" },
-    "12000001": { "name": "Air Bomb" },
+    "12000000": { "name": "Bomb" },
+    "12000001": { "name": "Spring Trap" },
     "12000002": { "name": "Giant Bomb" },
-    "12000005": { "name": "Seeking Air Mine" },
-    "12000006": { "name": "Skeleton Trap" },
-    "12000008": { "name": "Tornado Trap" },
-    "12000016": { "name": "New Trap" }
+    "12000005": { "name": "Air Bomb" },
+    "12000006": { "name": "Seeking Air Mine" },
+    "12000008": { "name": "Skeleton Trap" },
+    "12000016": { "name": "Tornado Trap" },
+    "12000020": { "name": "Giga Bomb" }
   },
   "traps2": {
     "12000010": { "name": "Mine (BB)" },
