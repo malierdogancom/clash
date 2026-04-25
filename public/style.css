@@ -1,16 +1,16 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:        #0c0c14;
-  --surface:   #13131f;
-  --surface2:  #1a1a2a;
-  --border:    #2a2a40;
-  --gold:      #c8a84b;
-  --gold-dim:  #7a6530;
+  --bg:        #180610;
+  --surface:   #280a1c;
+  --surface2:  #4a0e2a;
+  --border:    #7d2348;
+  --gold:      #e8dcc7;
+  --gold-dim:  #b5906a;
   --elixir:    #9b59b6;
   --dark-el:   #1a8a4a;
-  --text:      #e0dff0;
-  --muted:     #6e6e8a;
+  --text:      #e8dcc7;
+  --muted:     #a07868;
   --red:       #c0392b;
   --orange:    #e67e22;
   --green:     #27ae60;
@@ -29,7 +29,7 @@ body {
 
 /* ── Header ── */
 header {
-  background: linear-gradient(135deg, #0c0c14 0%, #1a1228 100%);
+  background: linear-gradient(135deg, #180610 0%, #340d22 100%);
   border-bottom: 1px solid var(--border);
   padding: 20px 24px 16px;
   display: flex;
@@ -101,7 +101,7 @@ button {
 button:active { transform: scale(0.97); }
 #analyze-btn {
   background: var(--gold);
-  color: #0a0a0a;
+  color: #1a060e;
 }
 #analyze-btn:hover { opacity: 0.9; }
 #clear-btn {
@@ -171,7 +171,7 @@ button:active { transform: scale(0.97); }
   border-bottom: 1px solid var(--border);
   background: var(--surface2);
 }
-.section-header:hover { background: #1f1f30; }
+.section-header:hover { background: #601535; }
 .section-header h2 {
   font-size: 13px;
   font-weight: 700;
@@ -227,7 +227,7 @@ button:active { transform: scale(0.97); }
 .timer.urgent { background: #3a1010; color: #e74c3c; }
 .timer.soon   { background: #3a2810; color: #e67e22; }
 .timer.normal { background: #0f2a1a; color: #2ecc71; }
-.timer.done   { background: #1a1a2a; color: var(--muted); }
+.timer.done   { background: #280a1c; color: var(--muted); }
 
 /* ── Building grid ── */
 .building-grid {
@@ -247,7 +247,7 @@ button:active { transform: scale(0.97); }
 }
 .building-row.upgrading {
   border-color: var(--gold-dim);
-  background: #1a1608;
+  background: #2d1020;
 }
 .building-row .bname { font-weight: 500; }
 .building-row .bname .upgrading-dot {
