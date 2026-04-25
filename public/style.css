@@ -29,7 +29,7 @@ body {
 
 /* ── Header ── */
 header {
-  background: linear-gradient(135deg, #3a0b21 0%, #6a1840 100%);
+  background: var(--surface);
   border-bottom: 1px solid var(--border);
   padding: 20px 24px 16px;
   display: flex;
