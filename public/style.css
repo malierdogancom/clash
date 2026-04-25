@@ -227,6 +227,7 @@ button:active { transform: scale(0.97); }
 .timer.urgent { background: #3a1010; color: #e74c3c; }
 .timer.soon   { background: #3a2810; color: #e67e22; }
 .timer.normal { background: #0f2a1a; color: #2ecc71; }
+.timer.done   { background: #1a1a2a; color: var(--muted); }
 
 /* ── Building grid ── */
 .building-grid {
